@@ -1,0 +1,6 @@
+.idea
+*.pyc
+*.db
+static/media/
+migrations/
+*.sqlite3
