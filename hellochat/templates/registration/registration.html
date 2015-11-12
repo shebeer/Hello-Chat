@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login screen</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<style>
+    .register_link {
+        text-decoration: blink;
+        color: #fff
+    }
+
+    .marginTop1P {
+        margin-top: 1%;
+    }
+    .wrapper {
+        top: 35% !important;
+        height: 600px;
+    }
+    .errorlist {
+        color:red !important;
+    }
+</style>
+<body>
+<div class="wrapper">
+    <div class="col-md-12 text-center" style="text-align: center">
+        {% if form.errors %}
+            <p> Invalid username/password combination, please try again </p>
+        {% endif %}
+        <h1>SignUp Now</h1>
+
+        <form id="register_form" method="post" action="{% url "registration" %}"
+              class="form col-md-12 center-block" enctype="multipart/form-data">
+            {% csrf_token %}
+        {% for field in user_form %}
+            <div class="feilds">
+                <div class="form-group">
+                    <p class="error">{{ field.errors }}</p>
+                    {{ field.label_tag }}
+                    <input type="text"
+                           class="form-control input-lg {% if field.errors %} alert-danger {% endif %}"
+                           placeholder="" name="{{ field.html_name }}"
+                           value="{{ field.value|default_if_none:"" }}">
+                </div>
+            </div>
+            {% endfor %}
+            {% for field in user_profile_form %}
+                <div class="feilds">
+                <div class="form-group">
+                    <p class="error">{{ field.errors }}</p>
+                    {{ field.label_tag }}
+                    <input type="text"
+                           class="form-control input-lg {% if field.errors %} alert-danger {% endif %}"
+                           placeholder="" name="{{ field.html_name }}"
+                           value="{{ field.value|default_if_none:"" }}">
+                </div>
+            </div>
+            {% endfor %}
+        <div style="width:100% !important;">
+
+            <div class="form-group" style="width: 50%;float:left">
+                <input type="submit" class="btn btn-primary btn-lg left" style="float: right;margin: 0 1% 0 0;" value="Sign up"/>
+            </div>
+            <div style="width: 50%;float:right">
+            <a class="" href="{% url 'home' %}" style="float: left;margin: 0 0% 0 1%;text-decoration: blink">
+                <input value="Cancel">
+            </a>
+            </div>
+        </div>
+        </form>
+    </div>
+
+    <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script src=''></script>
+</body>
+</html>
+
+
+{#<a href="password_reset/" id="forgot"> forgot username/password</a><br/>#}
+{#<a href="register" id="new">new user</a>#}

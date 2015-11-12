@@ -5,6 +5,15 @@
     <title>Login screen</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
+<style>
+    .register_link{
+        text-decoration: blink;
+        color : #fff
+    }
+    .marginTop1P {
+        margin-top: 1%;
+    }
+</style>
 <body>
 <div class="wrapper">
     <div class="container">
@@ -19,6 +28,7 @@
             <input type="password" placeholder="Password" value="" name="{{ form.password.html_name }}">
             <button type="submit" id="login-button">Login</button>
             <input type="hidden" name="next" value="{{ next }}"/>
+            <div class="registerLink marginTop1P"><a href="{% url 'registration' %}" class="register_link">Not a member? Signup Now</a> </div>
         </form>
     </div>
 
