@@ -21,4 +21,4 @@ class Message(models.Model):
     is_active = models.BooleanField(default=True)
 
     def __unicode__(self):
-        return "From:%s To:%s On:%s"%(self.msg_from.username,self.msg_to.username,str(self.created_on))
+        return "From:%s To:%s On:%s"%(self.msg_from,self.msg_to,str(self.created_on))

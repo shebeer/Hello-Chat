@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^accounts/login/$','django.contrib.auth.views.login',name='login'),
     url(r'^accounts/register/$',views.Registration.as_view(),name='registration'),
      url(r'^logout/$','django.contrib.auth.views.logout_then_login',name='logout'),
-    url(r'^$','core.views.home',name='home')
+    url(r'^$','core.views.home',name='home'),
+    url(r'^api/v1/',include('core.urls'),name='api')
 ]

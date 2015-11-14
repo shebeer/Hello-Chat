@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Login screen</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
+{% extends 'registration/base.html'%}
+{% block head %}
+    <title>HelloChat:Registration</title>
+{% endblock %}
+{% block content %}
 <style>
     .register_link {
         text-decoration: blink;
@@ -18,16 +16,11 @@
         top: 35% !important;
         height: 600px;
     }
-    .errorlist {
-        color:red !important;
-    }
+
+
 </style>
-<body>
-<div class="wrapper">
+
     <div class="col-md-12 text-center" style="text-align: center">
-        {% if form.errors %}
-            <p> Invalid username/password combination, please try again </p>
-        {% endif %}
         <h1>SignUp Now</h1>
 
         <form id="register_form" method="post" action="{% url "registration" %}"
@@ -70,24 +63,4 @@
         </div>
         </form>
     </div>
-
-    <ul class="bg-bubbles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-</div>
-<script src=''></script>
-</body>
-</html>
-
-
-{#<a href="password_reset/" id="forgot"> forgot username/password</a><br/>#}
-{#<a href="register" id="new">new user</a>#}
+{% endblock %}
