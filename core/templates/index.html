@@ -28,16 +28,35 @@
 
         .prof_pic {
             height: 30px !important;
-            width: 30px  !important;
-            line-height: 21px  !important;
+            width: 30px !important;
+            line-height: 21px !important;
+            margin: 30% 0 0 0 !important;
 
         }
+
+        .load_prev_li {
+            background-color: silver;
+            color: grey;
+        }
+
+        .navbar-top-links li a {
+            padding-left: 0px !important;
+        }
+
+        .cool_background {
+            background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+        }
+
+        #wrapper, .navbar-default {
+            background-color: aliceblue;
+        }
+
     </style>
     <div class="col-lg-12" style="margin-top:3%">
-        <div class="chat-panel panel panel-default" style="display: none">
+        <div class="chat-panel panel panel-default" style="">
             <div class="panel-heading">
                 <i class="fa fa-comments fa-fw" id="chat_icon"></i>
-                <span id="chat_person">Chat</span>
+                <span id="chat_person">ChatBot </span>
 
                 <div class="btn-group pull-right">
                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -49,19 +68,47 @@
                                 <i class="fa fa-check-circle fa-fw"></i> Clear window
                             </a>
                         </li>
-                        <li>
-                            <a id="delete_msgs">
-                                <i class="fa fa-times fa-fw"></i> Delete Messages
-                            </a>
-                        </li>
+                        {#                        <li>#}
+                        {#                            <a id="delete_msgs">#}
+                        {#                                <i class="fa fa-times fa-fw"></i> Delete Messages#}
+                        {#                            </a>#}
+                        {#                        </li>#}
 
                     </ul>
                 </div>
             </div>
             <!-- /.panel-heading -->
-            <div class="panel-body" id="chat_window">
+            <div class="panel-body cool_background" id="chat_window">
                 <ul class="chat">
+                    <li class="right clearfix">
+                        <span class="chat-img pull-right">
+                        <div class="comment_picture">
+                            <div class="comment_char msg_received">CB</div>
+                        </div>
+            </span>
 
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <small class=" text-muted"><i class="fa fa-clock-o fa-fw"></i>{% now "H:i d, m Y" %}
+                                </small>
+                                <strong class="pull-right primary-font">ChatBot</strong></div>
+                            <p class="pull-right">Hello {{ request.user.username }}, How are you?</p></div>
+                    </li>
+                    <li class="right clearfix">
+                        <span class="chat-img pull-right">
+                        <div class="comment_picture">
+                            <div class="comment_char msg_received">CB</div>
+                        </div>
+            </span>
+
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <small class=" text-muted"><i class="fa fa-clock-o fa-fw"></i>{% now "H:i d, m Y" %}
+                                </small>
+                                <strong class="pull-right primary-font">ChatBot</strong></div>
+                            <p class="pull-right">Welcome to HelloChat... start chat with your friends , and enjoy
+                                HelloChat :-) </p></div>
+                    </li>
                 </ul>
             </div>
             <!-- /.panel-body -->
@@ -70,7 +117,7 @@
                     <input id="msg-input" type="text" class="form-control input-sm"
                            placeholder="Type your message here..."/>
                                 <span class="input-group-btn">
-                                    <button class="btn btn-warning btn-sm" id="btn-chat" onclick="post_message();">
+                                    <button class="btn btn-warning btn-sm" id="btn-chat" onclick="post_message({{ request.user.id }},'{{ request.user.username }}');">
                                         Send
                                     </button>
                                 </span>
@@ -93,7 +140,7 @@
         setInterval(function () {
             fetch_friends({{ request.user.id }});
             fetch_new_messages({{ request.user.id }})
-        }, 5000);
+        }, 3000);
     </script>
 
 {% endblock %}

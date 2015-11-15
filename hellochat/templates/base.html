@@ -18,6 +18,7 @@
     <link href="/static/css/sb-admin-2.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="/static/images/logo.ico">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,27 +35,33 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header text-center col-xs-12 hidden-xs hidden-sm">
+        <div class="navbar-header text-center col-xs-12">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Hello Chat</a>
+            <a class="navbar-brand" href="{% url 'home' %}" style="width: 15%;text-align: left">
+                <span>
+            <img src="/static/images/logo.svg" width="40" height="40">
+                </span><span> Hello Chat</span>
+            </a>
             <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
+                <div class="comment_picture">
+                    <div class="comment_char prof_pic">{{ request.user.username|slice:"1"|upper }}</div>
+                </div>
                 <li class="dropdown pull-right">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <div class="comment_picture"><div class="comment_char prof_pic">{{ request.user.username|slice:"1"|upper }}</div></div>
                         {{ request.user.username }} <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-{#                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>#}
-{#                        </li>#}
-{#                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>#}
-{#                        </li>#}
-{#                        <li class="divider"></li>#}
+                        {#                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>#}
+                        {#                        </li>#}
+                        {#                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>#}
+                        {#                        </li>#}
+                        {#                        <li class="divider"></li>#}
                         <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
@@ -63,43 +70,7 @@
                 <!-- /.dropdown -->
             </ul>
         </div>
-        <div class="navbar-header text-center col-xs-12 hidden-lg hidden-md">
-            <div class="col-xs-2">
-                <button type="button" class="navbar-toggle pull-left" data-toggle="collapse"
-                        data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="col-xs-7 text-center" style="text-align:center !important">
-                <div class="" style="font-size: 22px;text-decoration: blink;margin: 3%;color: #5e5e5e;">Hello Chat</div>
-            </div>
 
-            <div class="col-xs-3">
-                <ul class="nav navbar-top-links navbar-right">
-                    <!-- /.dropdown -->
-                    <li class="dropdown pull-right">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="../../hellochat/templates/registration/login.html"><i
-                                    class="fa fa-sign-out fa-fw"></i> Logout</a>
-                            </li>
-                        </ul>
-                        <!-- /.dropdown-user -->
-                    </li>
-                    <!-- /.dropdown -->
-                </ul>
-            </div>
-        </div>
         <!-- /.navbar-header -->
 
 

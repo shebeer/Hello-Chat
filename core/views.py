@@ -1,4 +1,5 @@
 import json
+import datetime
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import HttpResponseRedirect, HttpResponse
@@ -82,9 +83,19 @@ def fetch_new_messages(request,from_id,user_id):
 
     print user_id
     messages = Message.objects.filter(msg_to__id=user_id,is_delivered=False,msg_from__id=from_id)
-    result = [{'from_id':x.msg_from.id,'from_name':x.msg_from.username,'message':x.message,'time':str(x.created_on)} for x in messages]
+    result = [{'from_id':x.msg_from.id,'from_name':x.msg_from.username,'message':x.message,'time':x.created_on.strftime("%I:%M %p   %d, %b  %Y")} for x in messages]
     messages.update(is_delivered=True)
     return HttpResponse(json.dumps(result),content_type='application/json')
+
+def fetch_old_messages(request,from_id,page):
+
+    msgs_per_page = 20
+    user_id  = request.user.id
+    messages = Message.objects.filter(Q(msg_from__id=from_id,msg_to__id=user_id) | Q(msg_from__id=user_id,msg_to__id=from_id)).order_by('created_on')[(int(page)-1)*int(msgs_per_page):int(page)*int(msgs_per_page)]
+    result = [{'from_id':x.msg_from.id,'from_name':x.msg_from.username,'message':x.message,'time':x.created_on.strftime("%I:%M %p   %d, %b  %Y")} for x in messages]
+    return HttpResponse(json.dumps(result),content_type='application/json')
+
+
 
 @csrf_exempt
 def post_new_message(request):
@@ -99,7 +110,7 @@ def post_new_message(request):
     if to_user and message:
         message_obj = Message(message=message,msg_from=request.user,msg_to=to_user)
         message_obj.save()
-        result = {'from_id':message_obj.msg_from.id,'from_name':message_obj.msg_from.username,'message':message_obj.message,'time':str(message_obj.created_on)}
+        result = {'from_id':message_obj.msg_from.id,'from_name':message_obj.msg_from.username,'message':message_obj.message,'time':str(message_obj.created_on.strftime("%I:%M %p   %d, %b  %Y"))}
     return HttpResponse(json.dumps(result),content_type='application/json')
 
 
