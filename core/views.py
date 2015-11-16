@@ -91,11 +91,11 @@ def fetch_old_messages(request,from_id,page):
 
     msgs_per_page = 20
     user_id  = request.user.id
-    messages = Message.objects.filter(Q(msg_from__id=from_id,msg_to__id=user_id) | Q(msg_from__id=user_id,msg_to__id=from_id)).order_by('created_on')[(int(page)-1)*int(msgs_per_page):int(page)*int(msgs_per_page)]
+    messages = Message.objects.filter(Q(msg_from__id=from_id,msg_to__id=user_id) | Q(msg_from__id=user_id,msg_to__id=from_id)).order_by('created_on')
+    messages.update(is_delivered=True)
+    messages = messages[(int(page)-1)*int(msgs_per_page):int(page)*int(msgs_per_page)]
     result = [{'from_id':x.msg_from.id,'from_name':x.msg_from.username,'message':x.message,'time':x.created_on.strftime("%I:%M %p   %d, %b  %Y")} for x in messages]
     return HttpResponse(json.dumps(result),content_type='application/json')
-
-
 
 @csrf_exempt
 def post_new_message(request):

@@ -79,10 +79,10 @@ function fetch_friends(user_id) {
         online_users = response.online_users;
         offline_users = response.offline_users;
 
-        if (online_users.length <1 && offline_users.length <1){
+        if (online_users.length < 1 && offline_users.length < 1) {
             $('.friends_list').append('<li data-id="0" data-name="you">' +
-                '<a href="#">No friends are joined, Share HelloChat with your friends ' +
-                '&nbsp;</a></li>')
+            '<a href="#">No friends are joined, Share HelloChat with your friends ' +
+            '&nbsp;</a></li>')
         }
         $.each(online_users, function (index, elem) {
             if (elem.new_msg_count > 0) {
@@ -108,6 +108,7 @@ function fetch_friends(user_id) {
             $('#chat_icon[data-id="' + elem.id + '"]').css("color", "grey")
 
         });
+
 
         $("#side-menu li").on("click", function () {
             MESSAGE_TO = $(this).attr("data-id");
@@ -272,7 +273,7 @@ function post_message(user_id, user_name) {
                             <small class=" text-muted"><i class="fa fa-clock-o fa-fw"></i>' + getDateTime() + '</small>\
                             <strong class="pull-right primary-font">ChatBot</strong>\
                             </div>\
-                            <p class="pull-right">Hi ' + user_name + ', I am too busy now :( I cant talk you now, \n Please check friends list available in left panel, and enjoy with your friends </p>\
+                            <p class="pull-right">Hi ' + user_name + ', I am too busy now :( I cant talk to you now, \n Please check friends list available in left panel, and enjoy with your friends </p>\
                         </div>\
                     </li>');
 

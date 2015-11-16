@@ -35,38 +35,35 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header text-center col-xs-12">
+            <div class="navbar-header text-center" style="width: 100%">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+{#                <span class="sr-only">Toggle navigation</span>#}
+{#                <span class="icon-bar"></span>#}
+{#                <span class="icon-bar"></span>#}
+{#                <span class="icon-bar"></span>#}
+                <a class="fa fa-users"></a>
             </button>
-            <a class="navbar-brand" href="{% url 'home' %}" style="width: 15%;text-align: left">
+            <a class="navbar-brand" href="{% url 'home' %}" style="width: 50%;text-align: left">
                 <span>
             <img src="/static/images/logo.svg" width="40" height="40">
-                </span><span> Hello Chat</span>
+                </span><span class=""> Hello Chat</span>
             </a>
             <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
-                <div class="comment_picture">
-                    <div class="comment_char prof_pic">{{ request.user.username|slice:"1"|upper }}</div>
-                </div>
+
                 <li class="dropdown pull-right">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         {{ request.user.username }} <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        {#                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>#}
-                        {#                        </li>#}
-                        {#                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>#}
-                        {#                        </li>#}
-                        {#                        <li class="divider"></li>#}
                         <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
+                <div class="comment_picture pull-right">
+                    <div class="comment_char prof_pic">{{ request.user.username|slice:"1"|upper }}</div>
+                </div>
                 <!-- /.dropdown -->
             </ul>
         </div>
@@ -78,7 +75,7 @@
 
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
-                <ul class="nav friends_list" id="side-menu">
+                <ul class="nav in friends_list" id="side-menu">
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->

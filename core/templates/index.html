@@ -106,8 +106,7 @@
                                 <small class=" text-muted"><i class="fa fa-clock-o fa-fw"></i>{% now "H:i d, m Y" %}
                                 </small>
                                 <strong class="pull-right primary-font">ChatBot</strong></div>
-                            <p class="pull-right">Welcome to HelloChat... start chat with your friends , and enjoy
-                                HelloChat :-) </p></div>
+                            <p class="pull-right">Welcome to HelloChat... Start chat and have fun. friends from all over world , are waiting you ...</p></div>
                     </li>
                 </ul>
             </div>
@@ -136,6 +135,7 @@
             MESSAGE_TO = {{ request.user.id }}
                     fetch_friends({{ request.user.id }});
             fetch_new_messages({{ request.user.id }})
+
         });
         setInterval(function () {
             fetch_friends({{ request.user.id }});
