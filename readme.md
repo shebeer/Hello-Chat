@@ -19,11 +19,10 @@ Pillow==3.0.0
 
 ## Installation
 
-### 1. virtualenv / virtualenvwrapper
-You should already know what is [virtualenv](http://www.virtualenv.org/), preferably [virtualenvwrapper](http://www.doughellmann.com/projects/virtualenvwrapper/) at this stage. So, simply create it for your own project, where `projectname` is the name of your project:
+### 1. Virtual environment
 
-`$ mkvirtualenv projectname`
-`$ source projectname/bin/activate`
+`$ mkvirtualenv env_hellochat`
+`$ source env_hellochat/bin/activate`
 
 point project directory using command 'cd'
 
