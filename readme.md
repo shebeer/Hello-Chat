@@ -39,4 +39,4 @@ by default it will be Sqlite,
 
 ### Ready? Go!
 
-`./manage.py runserver`
+`python manage.py runserver`
