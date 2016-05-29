@@ -1,6 +1,6 @@
 # HelloChat
 
-HelloChat is a minimal version of live chat application.
+HelloChat is a simple django applicaion, It is minimal version of ajax based realtime chat application.
 
 This application comes with:
 
